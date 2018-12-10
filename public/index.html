@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          />
+
+    <style>
+.sair {
+  cursor: pointer;
+  padding: 20px;
+  float: left;
+}
+.sair span {
+  font-weight: 1;
+}
+.sair:hover span{
+  color: #ddd
+
+}
+span {
+  transform: rotate(20deg);
+  font-size: 1.6vw;
+  font-weight: bold;
+  font-family: Arial;
+  font-family: "Unlock", cursive;
+  color: transparent;
+}
+      #book:hover,
+      #envelope:hover,
+      #quadrinho:hover,
+      #fita:hover {
+        cursor: pointer;
+      }
+      #book:hover span,
+      #envelope:hover span,
+      #quadrinho:hover span,
+      #fita:hover span {
+        color: #76cdb5;
+      }
+
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
+      } /* Modal Content/Box */
+      .equipe-content {
+        display: flex;
+        justify-content: center;
+      } /* The Close Button */
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link
+                             href="https://fonts.googleapis.com/css?family=Unlock"
+                             rel="stylesheet"
+                             />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Panambi - Os Borboletas Azuis</title>
+  </head>
+
+  <body style="background-image: url('./bg.jpg')">
+    <div style="display: flex; justify-content: space-between">
+      <div id="book" style="width:30%;">
+        <img src="book.png" alt="" style="width: 100%" />
+        <div style="transform: rotate(-7deg);  margin-top: -25px">
+          <span style="margin-left: 6vw;">Material Teórico (TCC)</span>
+        </div>
+      </div>
+      <div id="quadrinho" style="width: 32%">
+        <img src="30.png" alt="" style="width: 100%" />
+        <div style="margin-top: -10px">
+          <span style="font-size: 1.7vw; margin-top: 15px; margin-left: 1.5vw"
+                >História em Quadrinhos</span
+              >
+        </div>
+      </div>
+      <div
+                id="dois"
+                style="display:flex; flex-direction: column; width:15%; justify-content: space-around; margin-right: 30px"
+                >
+                <div id="envelope">
+                  <img
+                     src="Envelope.png"
+                     alt=""
+                     style="width: 100%; transform: rotate(-10deg);"
+                     />
+                  <div style="transform: rotate(-9deg);">
+                    <span style="font-size: 2.4vw; margin: 0 0 0 30px;">Equipe</span>
+                  </div>
+                </div>
+                <div id="fita" style="margin-left -150px">
+                  <img
+                               src="Fita.png"
+                               alt=""
+                               style="width: 100%; transform: rotate(-10deg);"
+                               />
+                  <div style="transform: rotate(-9deg);">
+                    <span style="font-size: 1.5vw; margin: 15px 0 0 2.3vw;"
+                          >Trilha Sonora</span
+                        >
+                  </div>
+                </div>
+      </div>
+    </div>
+
+    <div id="root" style="display: none"></div>
+    <!-- Trigger/Open The Modal -->
+    <!-- The Modal -->
+    <div id="modal-equipe" class="modal">
+      <!-- Modal content -->
+      <div class="equipe-content">
+        <img src="equipe.png" alt="" height="700"/>
+      </div>
+    </div>
+
+    <div id="modal-sound" class="modal" style="display: none; justify-content: center; padding-top: 20px">
+      <!-- Modal content -->
+      <div class="sound-content" style="width: 50%">
+<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/659541492&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      </div>
+      </div>
+    </div>
+
+    <script>
+      console.log('Made in a hurry by Estacio and Luciano. Dont judge our code :)')
+      // Get the modal
+      var modalEquipe = document.getElementById("modal-equipe");
+      var modalSound = document.getElementById("modal-sound");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+      var envelope = document.getElementById("envelope");
+      var fita = document.getElementById("fita")
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      envelope.onclick = function(e) {
+        console.log('Modal will be opened. I hope')
+        modalEquipe.style.display = "block";
+        e.stopPropagation()
+      };
+
+      fita.onclick = function(e) {
+        console.log('Modal will be opened. I hope')
+        modalSound.style.display = "flex";
+        e.stopPropagation()
+      };
+      // When the user clicks on <span> (x), close the modal
+      //span.onclick = function() {
+      // modalEquipe.style.display = "none";
+      //};
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        console.log('click')
+        modalEquipe.style.display = "none";
+        modalSound.style.display = "none";
+      };
+    </script><script type="text/javascript">
+      (function () {
+        document.querySelector('#book').onclick = () => location.href = "tcc.html"
+        document.querySelector('#quadrinho').onclick = () => location.href = "livro.html"
+      })()
+    </script>
+  </body>
+</html>
