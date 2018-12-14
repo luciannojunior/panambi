@@ -521,11 +521,14 @@
   </head>
   <body
     style="margin: 0px; padding: 0px; width: 1092px; height: 994px; position: fixed;"
+  >
+    <div
+      class="sair"
+      style="padding: 20px; float: left; cursor: pointer;"
+      onclick="location.href='index.html'"
     >
-    <div class="sair" style="padding: 20px; float: left; cursor: pointer;" onclick="location.href='index.html'">
       <span style="color: white; font-size: 30px; font-family: Arial">X</span>
     </div>
-
     <script
       src="javascript/config.js?f77e80b44096eccbcf853a5b30eed03c"
       type="text/javascript"
@@ -543,7 +546,7 @@
       type="text/javascript"
     ></script
     ><script
-      src="book/template/Metro/javascript/main.js"
+      src="book/template/Metro/javascript/main.js?c=clean"
       type="text/javascript"
     ></script
     ><script
@@ -582,6 +585,7 @@
       type="text/javascript"
     ></script>
     <script type="text/javascript">
+      var firstPlayed = false;
       function setSong(source, number) {
         const src = `files/songs/0${number}.mp3`;
         if (source && source.attr && source.attr("src") !== src) {
@@ -589,12 +593,20 @@
           const audio = $("audio").get(0);
           audio.pause();
           audio.load();
-          audio.oncanplaythrough = audio.play();
+          audio.oncanplaythrough = audio
+            .play()
+            .catch(err => source.attr && source.attr("src", ""));
         }
       }
       $(document).ready(function() {
-        const source = $("#audioSource").get(0);
-        setSong(source, 1);
+        const interval = setInterval(() => {
+          const container = document.getElementById("tmpContainer");
+          if (container) {
+            clearInterval(interval);
+            var source = $("#audioSource");
+            setSong(source, audio);
+          }
+        }, 5e2);
       });
     </script>
     <audio style="display: none" controls loop>
